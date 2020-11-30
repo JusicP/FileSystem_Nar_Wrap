@@ -1,22 +1,28 @@
 ﻿#include <windows.h>
 #include <stdio.h>
 
-#include "Interface/Interface.h"
+#include "Wrapper.h"
 #include "Interface/IFileSystem.h"
+
+IFileSystem* realFileSystemNar;
+
+GET_INTERFACE_PTR(FileSystem, "FileSystem_Nar_Orig.dll", FILESYSTEM_INTERFACE_VERSION, &realFileSystemNar);
 
 class CFileSystemNar : public IFileSystem
 {
 	virtual void Mount(void)
 	{
 		printf("Mount\n");
+		realFileSystemNar->Mount();
 	}
 	virtual void Unmount(void)
 	{
 		printf("Unmount\n");
+		realFileSystemNar->Unmount();
 	}
 	virtual void RemoveAllSearchPaths(void)
 	{
-
+		realFileSystemNar->RemoveAllSearchPaths();
 	}
 	virtual void AddSearchPath(const char* pPath, const char* pathID = 0)
 	{
@@ -216,4 +222,9 @@ class CFileSystemNar : public IFileSystem
 	}
 };
 
-EXPOSE_INTERFACE(CFileSystemNar, IFileSystem, FILESYSTEM_INTERFACE_VERSION)
+//EXPOSE_INTERFACE(CFileSystemNar, IFileSystem, FILESYSTEM_INTERFACE_VERSION)
+
+CFileSystemNar gWrapFileSystemNar;
+IFileSystem* filesystem = &gWrapFileSystemNar;
+
+EXPOSE_SINGLE_INTERFACE_GLOBALVAR(CFileSystemNar, IFileSystem, FILESYSTEM_INTERFACE_VERSION, gWrapFileSystemNar);

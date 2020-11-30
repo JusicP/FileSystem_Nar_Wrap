@@ -13,7 +13,7 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Файлы заголовков\Interfaces">
+    <Filter Include="Файлы заголовков\Interface">
       <UniqueIdentifier>{118cff63-4987-456a-8951-3a8b0be2d754}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -21,16 +21,19 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Interface\interface.cpp">
+    <ClCompile Include="wrapper.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Interface\interface.h">
+    <ClInclude Include="Interface\IFileSystem.h">
+      <Filter>Файлы заголовков\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapper.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Interface\IFileSystem.h">
-      <Filter>Файлы заголовков\Interfaces</Filter>
+    <ClInclude Include="Interface\interface.h">
+      <Filter>Файлы заголовков\Interface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
