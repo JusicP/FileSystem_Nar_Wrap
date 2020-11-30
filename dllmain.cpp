@@ -115,9 +115,11 @@ class CFileSystemNar : public IFileSystem
 		
 		return retVal;
 	}
-	virtual char* GetReadBuffer(FileHandle_t file, char* pBuffer)
+	virtual char* GetReadBuffer(FileHandle_t file, char* pBuffer, int a1)
 	{
-		return realFileSystemNar->GetReadBuffer(file, pBuffer);
+		//*pBuffer = NULL;
+		return NULL;
+		//return realFileSystemNar->GetReadBuffer(file, pBuffer);
 	}
 	virtual void ReleaseReadBuffer(FileHandle_t file, char* pBuffer)
 	{
@@ -246,17 +248,19 @@ class CFileSystemNar : public IFileSystem
 		LogDebug("Unknown3\n");
 		realFileSystemNar->Unknown3(pFileName, a1);
 	}
-	virtual void Unknown4()
+	virtual int Unknown4()
 	{
 		LogDebug("Unknown4\n");
+		return realFileSystemNar->Unknown4();
 	}
 	virtual void Unknown5()
 	{
 		LogDebug("Unknown5\n");
 	}
-	virtual void Unknown6()
+	virtual int Unknown6(LPWSTR pszPath)
 	{
 		LogDebug("Unknown6\n");
+		return 0;
 	}
 	virtual void Unknown7()
 	{

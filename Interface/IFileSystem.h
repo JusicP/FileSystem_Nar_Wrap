@@ -64,7 +64,7 @@ public:
 	virtual int Write(void const *pInput, int size, FileHandle_t file) = 0;
 	virtual char *ReadLine(char *pOutput, int maxChars, FileHandle_t file) = 0;
 	virtual int FPrintf(FileHandle_t file, char *pFormat, ...) = 0;
-	virtual char *GetReadBuffer(FileHandle_t file, char *pBuffer) = 0;
+	virtual char *GetReadBuffer(FileHandle_t file, char *pBuffer, int a1) = 0;
 	virtual void ReleaseReadBuffer(FileHandle_t file, char *pBuffer) = 0;
 	virtual const char *FindFirst(const char *pWildCard, FileFindHandle_t *pHandle, const char *pathID = 0) = 0;
 	virtual const char *FindNext(FileFindHandle_t handle) = 0;
@@ -96,9 +96,9 @@ public:
 	virtual bool Unknown1(const char* pFileName, const char* pathID) = 0;
 	virtual void* Unknown2(const char* pFileName) = 0;
 	virtual void Unknown3(const char* pFileName, char* a1) = 0;
-	virtual void Unknown4() = 0;
+	virtual int Unknown4() = 0;
 	virtual void Unknown5() = 0;
-	virtual void Unknown6() = 0;
+	virtual int Unknown6(LPWSTR pszPath) = 0;
 	virtual void Unknown7() = 0;
 	virtual void Unknown8() = 0;
 	virtual void Unknown9(void* Src, int a1) = 0;
@@ -179,7 +179,7 @@ public:
 	virtual bool Unknown1(const char* pFileName, const char* pathID) = 0;
 	virtual void* Unknown2(const char* pFileName) = 0;
 	virtual void Unknown3(const char* pFileName, char* a1) = 0;
-	virtual void Unknown4() = 0;
+	virtual int Unknown4() = 0;
 	virtual void Unknown5() = 0;
 	virtual void Unknown6() = 0;
 	virtual void Unknown7() = 0;
